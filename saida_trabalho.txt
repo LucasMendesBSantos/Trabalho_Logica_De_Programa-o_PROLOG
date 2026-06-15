@@ -1,0 +1,253 @@
+﻿
+============================================================
+ LOGICA PARA COMPUTACAO - SAIDA DO TRABALHO.PL
+ Exercicios 10.1 a 10.16
+ Alumo: Lucas Mendes B. dos Santos
+============================================================
+
+------------------------------------------------------------
+EXERCICIO 10.1 - Consultas ao programa familiar
+------------------------------------------------------------
+1) ?- genitor(X, jim).
+   X = pat
+
+2) ?- genitor(jim, X).
+   No
+
+3) ?- genitor(pam, X), genitor(X, pat).
+   X = bob
+
+4) ?- genitor(pam, X), genitor(X, Y), genitor(Y, jim).
+   X = bob, Y = pat
+
+------------------------------------------------------------
+EXERCICIO 10.2 - Consultas formuladas
+------------------------------------------------------------
+1) Quem sao os pais de Pat?
+   ?- genitor(X, pat).
+   X = bob
+
+2) Liz possui filhos?
+   ?- genitor(liz, X).
+
+
+3) Quem e o avo de Pat?
+   ?- avos(X, pat), homem(X).
+   X = tom
+
+4) Quem e a mae de Jim?
+   ?- mae(X, jim).
+   X = pat
+
+5) Quem e o irmao de Bob?
+   ?- irmao(X, bob).
+   No
+
+6) Quem e a irma de Pat?
+   ?- irma(X, pat).
+   X = ann
+
+------------------------------------------------------------
+EXERCICIO 10.3 - Novas regras (consultas de exemplo)
+------------------------------------------------------------
+Tia de Ann:
+   ?- tia(X, ann).
+   X = liz
+
+Avos paternos de Bob:
+   ?- avos_paternos(X, bob).
+   No
+
+Ascendentes de Jim:
+   ?- ascendente(jim, Z).
+   Z = pat
+   Z = bob
+   Z = pam
+   Z = tom
+
+Primos de Ann:
+   ?- primo(X, ann).
+   X = carol
+   X = mike
+
+------------------------------------------------------------
+EXERCICIO 10.4 - Encadeamento para tras
+------------------------------------------------------------
+1) ?- genitor(pam, bob).
+   Yes
+
+2) ?- mae(pam, bob).
+   Yes
+
+3) ?- avos(pam, ann).
+   Yes
+
+4) ?- avos(bob, jim).
+   Yes
+
+------------------------------------------------------------
+EXERCICIO 10.5 - Base de conhecimento animal
+------------------------------------------------------------
+1) O piupiu voa?  ?- pode_voar(piupiu).
+   Yes
+
+2) Cor do piupiu? ?- cor(piupiu, C).
+   C = amarelo
+
+3) A Xica voa?    ?- pode_voar(xica).
+   No
+
+4) Xica tem asas? ?- tem_asas(xica).
+   Yes
+
+5) Vamp voa?      ?- pode_voar(vamp).
+   Yes
+   Vamp tem asas? ?- tem_asas(vamp).
+   Yes
+   Vamp poe ovos? ?- poe_ovos(vamp).
+   No
+
+6) Animais que poem ovos: ?- poe_ovos(X).
+   X = piupiu
+   X = xica
+   X = alfred
+   X = nemo
+
+7) Animais comestiveis:   ?- comestivel(X).
+   X = mimosa
+   X = alfred
+
+8) Animais que andam:     ?- anda(X).
+   X = mimosa
+   X = xica
+
+9) Nadam mas nao poem ovos: ?- pode_nadar(X), \+(poe_ovos(X)).
+   X = tutu
+
+------------------------------------------------------------
+EXERCICIO 10.6 - Consultas a cadeia alimentar
+------------------------------------------------------------
+1) ?- come(urso, peixinho).
+   No
+
+2) ?- come(raposa, coelho).
+   Yes
+
+3) ?- come(guaxinim, X).
+   X = peixe
+
+4) ?- come(X, grama).
+   X = coelho
+   X = veado
+
+5) ?- come(urso, X), come(X, coelho).
+   X = raposa
+
+6) ?- presa(X), not(come(raposa, X)).
+   X = peixe
+   X = peixinho
+   X = peixe
+   X = guaxinim
+   X = raposa
+   X = veado
+   X = veado
+
+------------------------------------------------------------
+EXERCICIO 10.7 e 10.8 - Herbivoros e Carnivoros
+------------------------------------------------------------
+Herbivoros: ?- herbivoro(X).
+   X = peixinho
+   X = coelho
+   X = veado
+
+Carnivoros: ?- carnivoro(X).
+   X = urso
+   X = peixe
+   X = guaxinim
+   X = raposa
+   X = lince
+
+Herbivoros presas da raposa: ?- herbivoro(X), come(raposa, X).
+   X = coelho
+
+------------------------------------------------------------
+EXERCICIO 10.9 - Capitais dos estados brasileiros
+------------------------------------------------------------
+Exemplos de consultas:
+   capital_do_estado(minas_gerais, C) -> C = belo_horizonte
+   capital_do_estado(sao_paulo, C)    -> C = sao_paulo
+   capital_do_estado(E, brasilia)      -> E = distrito_federal
+
+------------------------------------------------------------
+EXERCICIO 10.10 - Tipos sanguineos
+------------------------------------------------------------
+O doa para: ?- pode_doar(o, X).
+   X = o
+   X = a
+   X = b
+   X = ab
+
+AB recebe de: ?- pode_receber(ab, X).
+   X = o
+   X = a
+   X = b
+   X = ab
+
+A recebe de: ?- pode_receber(a, X).
+   X = o
+   X = a
+
+------------------------------------------------------------
+EXERCICIO 10.11 - Predicados sobre listas
+------------------------------------------------------------
+intersecao([1,2,3,4],[2,4,6],I)   -> I = [2,4]
+subconjunto([1,3],[1,2,3,4])       -> Yes
+tamanho_par([a,b,c,d])             -> Yes
+tamanho_impar([a,b,c])             -> Yes
+inverter([1,2,3],R)                -> R = [3,2,1]
+maximo([3,1,7,2,5],M)              -> M = 7
+soma_naturais(5,S)                  -> S = 15
+soma_naturais(10,S)                 -> S = 55
+
+------------------------------------------------------------
+EXERCICIO 10.12 - Potencia
+------------------------------------------------------------
+potencia(2,10,P) -> P = 1024
+potencia(3,4,P)  -> P = 81
+potencia(5,0,P)  -> P = 1
+
+------------------------------------------------------------
+EXERCICIO 10.13 - Checagem com cortes
+------------------------------------------------------------
+checagem(5,R)  -> R = positivo
+checagem(0,R)  -> R = zero
+checagem(-3,R) -> R = negativo
+
+------------------------------------------------------------
+EXERCICIO 10.14 - Classificacao por faixa etaria
+------------------------------------------------------------
+classificar(8,C)  -> C = crianca
+classificar(15,C) -> C = adolescente
+classificar(30,C) -> C = adulto
+classificar(70,C) -> C = idoso
+
+------------------------------------------------------------
+EXERCICIO 10.15 - Signo zodiacal
+------------------------------------------------------------
+signo(25,12,S) -> S = capricornio
+signo(15,12,S) -> S = sagitario
+signo(10,1,S)  -> S = capricornio
+signo(25,6,S)  -> S = cancer
+signo(1,3,S)   -> S = peixes
+signo(23,7,S)  -> S = leao
+
+------------------------------------------------------------
+EXERCICIO 10.16 - Traducao de codigos de erro
+------------------------------------------------------------
+traduza(1,S) -> S = integer_overflow
+traduza(2,S) -> S = divisao_por_zero
+traduza(3,S) -> S = id_desconhecido
+
+============================================================
+ FIM DA EXECUCAO
+============================================================
