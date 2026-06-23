@@ -3,27 +3,6 @@
  Exercicios 10.1 a 10.16
  Aluno: Lucas Mendes B. dos Santos
 ============================================================
-
-------------------------------------------------------------
-COMO EXECUTAR O ARQUIVO
-------------------------------------------------------------
-
-1. Abra o SWI-Prolog (swipl no terminal ou pelo atalho)
-
-2. Carregue o arquivo com um dos comandos abaixo:
-
-   ?- consult('trabalho.pl').
-
-   OU (se estiver na mesma pasta do arquivo):
-
-   ?- [trabalho].
-
-   Resposta esperada:
-   true.
-
-3. Para encerrar o SWI-Prolog:
-   ?- halt.
-
 ------------------------------------------------------------
 EXERCICIO 10.1 - Consultas ao programa familiar
 ------------------------------------------------------------
